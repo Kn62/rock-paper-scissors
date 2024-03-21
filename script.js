@@ -59,4 +59,5 @@ function anounceWinner () {
    }
 }
 
-playGame()
+const button = document.querySelector("#start-game");
+button.addEventListener("click", playGame);
