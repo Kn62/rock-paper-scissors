@@ -51,11 +51,11 @@ function playGame(){
 
 function anounceWinner () {
    if (playerScore > computerScore) {
-      console.log("You Won!")
+      console.log("You Won! " + "Your score: " + playerScore + " Computer score: " + computerScore)
    } else if (playerScore < computerScore) {
-      console.log("You Lose!")
+      console.log("You Lose! " + "Your score: " + playerScore + " Computer score: " + computerScore)
    } else {
-      console.log("It's a tie")
+      console.log("It's a tie " + "Your score: " + playerScore + " Computer score: " + computerScore)
    }
 }
 
