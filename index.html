@@ -4,11 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="script.js" async></script>
 </head>
 <body>
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>   
+    <div class="page-container">
+        <header>
+            <h1>Rock Paper Scissors Revisited</h1>
+        </header>
+
+        <main>
+            <div class="round">
+                <p>Rounds number</p>
+                <p id="display-round">0</p>
+            </div>
+            <div class="announce-round">
+                <p id="announce"></p>
+            </div>
+            <div class="scores">
+                <div id="player-score">
+                    <p>Your score</p>
+                    <p id="display-player-score">0</p>
+                </div>
+                <div>
+                    <p>VS</p>
+                </div>
+                <div id="computer-score">
+                    <p>Computer score</p>
+                    <p id="display-computer-score">0</p>
+                </div>
+            </div>
+            <div class="button-container">
+                <img id="rock" src="./imgs/Malphite.jpg"/>
+                <img id="paper" src="./imgs/Ivern.jpg"/>
+                <img id="scissors" src="./imgs/Gwen.jpg"/>
+            </div>
+        </main>
+
+        <footer>
+            <a href="https://github.com/Kn62" target="_blank">  My github (Kn62)</a>
+        </footer>
+    </div>
 </body>
 </html>
