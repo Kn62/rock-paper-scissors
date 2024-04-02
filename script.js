@@ -6,6 +6,13 @@ const containerComputerScores = document.querySelector("#computer-score");
 const pComputerScore = document.querySelector("#display-computer-score");
 const pAnnounce = document.querySelector("#announce")
 const displayContainer = document.querySelector(".display-result")
+const button5 = document.querySelector("#max-5-rounds");
+const button10 = document.querySelector("#max-10-rounds");
+const button20 = document.querySelector("#max-20-rounds");
+const buttonRestartGame = document.querySelector("#reset-game");
+const buttonScissors = document.querySelector("#scissors");
+const buttonPaper = document.querySelector("#paper");
+const buttonRock = document.querySelector("#rock");
 
 let playerScore = 0;
 let computerScore = 0;
@@ -109,29 +116,14 @@ const playRound = function(playerSelection) {
 const playWithRock = function () {
    console.log(playRound("Rock"));
 }
+
 const playWithPaper = function () {
    console.log(playRound("Paper"));
 }
+
 const playWithScissors = function () {
    console.log(playRound("Scissors"));
 }
-
-const buttonRock = document.querySelector("#rock");
-buttonRock.addEventListener("click", playWithRock );
-
-
-const buttonPaper = document.querySelector("#paper");
-buttonPaper.addEventListener("click", playWithPaper );
-
-
-const buttonScissors = document.querySelector("#scissors");
-buttonScissors.addEventListener("click", playWithScissors);
-
-const buttonRestartGame = document.querySelector("#reset-game");
-buttonRestartGame.addEventListener("click", restartGame); 
-
-
-
 
 const playWith5 = function () {
    roundMax = 5;
@@ -160,11 +152,10 @@ const playWith20 = function () {
    pRound.textContent = `Round 0/${roundMax}`;
 };
 
-const button5 = document.querySelector("#max-5-rounds");
+buttonRock.addEventListener("click", playWithRock );
+buttonPaper.addEventListener("click", playWithPaper );
+buttonScissors.addEventListener("click", playWithScissors);
+buttonRestartGame.addEventListener("click", restartGame); 
 button5.addEventListener("click", playWith5);
-
-const button10 = document.querySelector("#max-10-rounds");
 button10.addEventListener("click", playWith10);
-
-const button20 = document.querySelector("#max-20-rounds");
 button20.addEventListener("click", playWith20);
