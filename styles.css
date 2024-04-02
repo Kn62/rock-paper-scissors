@@ -22,8 +22,6 @@ button {
 .round-button-container {
     display: flex;
     gap: 20%;
-    padding: 5%;
-
 }
 
 .page-container {
@@ -52,11 +50,11 @@ main {
     display: flex;
     flex-direction: column;
     text-align: center;
-    gap: 20px;
+    gap: 50px;
     font-size: 30px;
     justify-content: center;
     height: 200px;
-    margin: 5%;
+    padding: 0 15%;
 }
 
 .scores {
@@ -97,13 +95,16 @@ img {
     border-radius: 6px;
 }
 
-#announce {
+#announce, #display-round {
     font-size: 40px;
+    height: 40px;
 }
 
 .announce-round {
     height: 100px;
 }
+
+
 
 #reset-game {
     text-align: center;
@@ -114,4 +115,10 @@ img {
     border-radius: 6px;
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
+}
+
+.display-result {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
