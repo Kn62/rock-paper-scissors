@@ -4,12 +4,12 @@ const containerPlayerScores = document.querySelector("#player-score");
 const pUserScore = document.querySelector("#display-player-score");
 const containerComputerScores = document.querySelector("#computer-score");
 const pComputerScore = document.querySelector("#display-computer-score");
-const containerAnnounce = document.querySelector(".announce-round")
 const pAnnounce = document.querySelector("#announce")
 
 let playerScore = 0;
 let computerScore = 0;
 let round = 0;
+let roundMax = 100;
 
 const restartGame = function() {
    window.location.reload();
@@ -17,7 +17,7 @@ const restartGame = function() {
 
 const updateRoundDisplayed = function() {
    round++;
-   pRound.textContent = round;
+   pRound.textContent = `Round ${round}/${roundMax}`;
    containerRound.appendChild(pRound);
 };
 
@@ -44,35 +44,35 @@ const playRound = function(playerSelection) {
    
    const announceRoundResultTie = function() {
       pAnnounce.textContent = `It's a tie, you both choosed ${playerSelection}`;
-      containerAnnounce.appendChild(pAnnounce);
+      containerRound.appendChild(pAnnounce);
    };
    
    const announceRoundResultLose = function() {
       pAnnounce.textContent = `You Lose! ${computerSelection} beats ${playerSelection}`;
-      containerAnnounce.appendChild(pAnnounce);
+      containerRound.appendChild(pAnnounce);
    };
    
    const announceRoundResultWin = function() {
       pAnnounce.textContent = `You Won! ${playerSelection} beats ${computerSelection}`;
-      containerAnnounce.appendChild(pAnnounce);
+      containerRound.appendChild(pAnnounce);
    };
 
    const announceMatchWin = function() {
-      pAnnounce.textContent = `You won the game ! ${playerScore} - ${computerScore}`;
-      containerAnnounce.appendChild(pAnnounce);
+      pAnnounce.textContent = `You won the Match ! ${playerScore} - ${computerScore}`;
+      containerRound.appendChild(pAnnounce);
    }
 
    const announceMatchLose = function() {
-      pAnnounce.textContent = `You lose the game ! ${playerScore} - ${computerScore}`;
-      containerAnnounce.appendChild(pAnnounce);
+      pAnnounce.textContent = `You lose the Match ! ${playerScore} - ${computerScore}`;
+      containerRound.appendChild(pAnnounce);
    }
 
    const announceMatchTie = function() {
       pAnnounce.textContent = `It's a tie ! ${playerScore} - ${computerScore}`;
-      containerAnnounce.appendChild(pAnnounce);
+      containerRound.appendChild(pAnnounce);
    }
 
-   if ( round === 5 ) {
+   if ( round === roundMax ) {
       if (playerScore > computerScore) {
          announceMatchWin();
       } else if (playerScore < computerScore) {
@@ -128,3 +128,40 @@ buttonScissors.addEventListener("click", playWithScissors);
 
 const buttonRestartGame = document.querySelector("#reset-game");
 buttonRestartGame.addEventListener("click", restartGame); 
+
+
+
+
+const playWith5 = function () {
+   roundMax = 5;
+   computerScore = 0;
+   playerScore = 0;
+   roundButtonContainer.style.visibility = 'hidden';
+   pRound.textContent = `Round 0/${roundMax}`
+}
+
+const playWith10 = function () {
+   roundMax = 10;
+   computerScore = 0;
+   playerScore = 0;
+   roundButtonContainer.style.visibility = 'hidden';
+   pRound.textContent = `Round 0/${roundMax}`
+}
+const playWith20 = function () {
+   roundMax = 20;
+   computerScore = 0;
+   playerScore = 0;
+   roundButtonContainer.style.visibility = 'hidden';
+   pRound.textContent = `Round 0/${roundMax}`
+}
+
+const button5 = document.querySelector("#max-5-rounds")
+button5.addEventListener("click", playWith5)
+
+const button10 = document.querySelector("#max-10-rounds")
+button10.addEventListener("click", playWith10)
+
+const button20 = document.querySelector("#max-20-rounds")
+button20.addEventListener("click", playWith20)
+
+const roundButtonContainer = document.querySelector(".round-button-container")

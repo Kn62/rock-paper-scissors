@@ -7,6 +7,25 @@
     color: #ffffff;
 }
 
+button {
+    padding: 6px 12px;
+    background-color:#fff;
+    color: #1F2937;
+    border-radius: 4px ;
+    border: 1px;
+    font-size: 15px;
+    cursor: pointer;
+    width: 33%;
+    margin: 0 auto;
+}
+
+.round-button-container {
+    display: flex;
+    gap: 20%;
+    padding: 5%;
+
+}
+
 .page-container {
     display: flex;
     flex-direction: column;
@@ -35,6 +54,9 @@ main {
     text-align: center;
     gap: 20px;
     font-size: 30px;
+    justify-content: center;
+    height: 200px;
+    margin: 5%;
 }
 
 .scores {
@@ -68,17 +90,6 @@ footer {
 a {
     list-style-type: none;
     cursor: pointer;
-}
-
-button {
-    padding: 6px 12px;
-    background-color:#fff;
-    color: #1F2937;
-    border-radius: 4px ;
-    border: 1px;
-    font-size: 15px;
-    cursor: pointer;
-    width: 33%;
 }
 
 img {
