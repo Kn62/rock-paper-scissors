@@ -93,3 +93,14 @@ img {
 .announce-round {
     height: 100px;
 }
+
+#reset-game {
+    text-align: center;
+    margin: 0 auto;
+    width: 130px;
+    visibility: hidden;
+    cursor: pointer;
+    border-radius: 6px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+}

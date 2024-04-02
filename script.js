@@ -11,6 +11,10 @@ let playerScore = 0;
 let computerScore = 0;
 let round = 0;
 
+const restartGame = function() {
+   window.location.reload();
+}
+
 const updateRoundDisplayed = function() {
    round++;
    pRound.textContent = round;
@@ -33,11 +37,11 @@ const getComputerChoice = function() {
    const choices = ["Rock", "Paper", "Scissors"];
    const randomIndex = Math.floor(Math.random() *  choices.length);
    return choices[randomIndex];
-} ; 
+} ;   
 
 const playRound = function(playerSelection) {
    const computerSelection = getComputerChoice();
-
+   
    const announceRoundResultTie = function() {
       pAnnounce.textContent = `It's a tie, you both choosed ${playerSelection}`;
       containerAnnounce.appendChild(pAnnounce);
@@ -52,50 +56,55 @@ const playRound = function(playerSelection) {
       pAnnounce.textContent = `You Won! ${playerSelection} beats ${computerSelection}`;
       containerAnnounce.appendChild(pAnnounce);
    };
- 
-   if ( playerSelection ===  computerSelection ) {
-      updateRoundDisplayed();
-      announceRoundResultTie();
-      return `Round ${round} \n It's a tie, you both choosed ${playerSelection} \n Your score = ${playerScore}\n Computer score = ${computerScore}`;
-   } else if ( (playerSelection === "Rock" && computerSelection === "Paper") 
-            || (playerSelection === "Paper" && computerSelection === "Scissors") 
-            || (playerSelection === "Scissors" && computerSelection === "Rock") ) {
-      updateComputerScoreDisplayed();
-      updateRoundDisplayed();
-      announceRoundResultLose();
-      return `Round ${round} \n You Lose! ${computerSelection} beats ${playerSelection} \n Your score = ${playerScore}\n Computer score = ${computerScore}`; 
-   } else if ( (playerSelection === "Rock" && computerSelection === "Scissors") 
-            || (playerSelection === "Paper" && computerSelection === "Rock") 
-            || (playerSelection === "Scissors" && computerSelection === "Paper")) {
-      updateUserScoreDisplayed();
-      updateRoundDisplayed();
-      announceRoundResultWin();
-      return `Round ${round} \n You Won! ${playerSelection} beats ${computerSelection} \n Your score = ${playerScore}\n Computer score = ${computerScore}`;
-   };   
-};
 
-// if ( round === 10 ) {
-//    if (playerScore > computerScore) {
-//       pAnnounce.textContent = `You won the game ! ${playerScore} VS ${computerScore}`;
-//       containerAnnounce.appendChild(pAnnounce);
-//       round = 0;
-//       playerScore = 0;
-//       computerScore = 0;
-//    } else if (playerScore < computerScore) {
-//       pAnnounce.textContent = `You lose the game ! ${playerScore} VS ${computerScore}`;
-//       containerAnnounce.appendChild(pAnnounce);
-//       round = 0;
-//       playerScore = 0;
-//       computerScore = 0;
-//    } else {
-//       pAnnounce.textContent = `It's a tie ! ${playerScore} VS ${computerScore}`;
-//       containerAnnounce.appendChild(pAnnounce);
-//       round = 0;
-//       playerScore = 0;
-//       computerScore = 0;
-//    }
-// }
+   const announceMatchWin = function() {
+      pAnnounce.textContent = `You won the game ! ${playerScore} - ${computerScore}`;
+      containerAnnounce.appendChild(pAnnounce);
+   }
 
+   const announceMatchLose = function() {
+      pAnnounce.textContent = `You lose the game ! ${playerScore} - ${computerScore}`;
+      containerAnnounce.appendChild(pAnnounce);
+   }
+
+   const announceMatchTie = function() {
+      pAnnounce.textContent = `It's a tie ! ${playerScore} - ${computerScore}`;
+      containerAnnounce.appendChild(pAnnounce);
+   }
+
+   if ( round === 5 ) {
+      if (playerScore > computerScore) {
+         announceMatchWin();
+      } else if (playerScore < computerScore) {
+         announceMatchLose();
+      } else {
+         announceMatchTie();
+      };
+      buttonRestartGame.style.visibility = 'visible'
+   } else {
+
+      if ( playerSelection ===  computerSelection ) {
+         updateRoundDisplayed();
+         announceRoundResultTie();
+         return `Round ${round} \n It's a tie, you both choosed ${playerSelection} \n Your score = ${playerScore}\n Computer score = ${computerScore}`;
+      } else if ( (playerSelection === "Rock" && computerSelection === "Paper") 
+      || (playerSelection === "Paper" && computerSelection === "Scissors") 
+      || (playerSelection === "Scissors" && computerSelection === "Rock") ) {
+         updateComputerScoreDisplayed();
+         updateRoundDisplayed();
+         announceRoundResultLose();
+         return `Round ${round} \n You Lose! ${computerSelection} beats ${playerSelection} \n Your score = ${playerScore}\n Computer score = ${computerScore}`; 
+      } else if ( (playerSelection === "Rock" && computerSelection === "Scissors") 
+      || (playerSelection === "Paper" && computerSelection === "Rock") 
+      || (playerSelection === "Scissors" && computerSelection === "Paper")) {
+         updateUserScoreDisplayed();
+         updateRoundDisplayed();
+         announceRoundResultWin();
+         return `Round ${round} \n You Won! ${playerSelection} beats ${computerSelection} \n Your score = ${playerScore}\n Computer score = ${computerScore}`;
+      };   
+   };
+}
+   
 const playWithRock = function () {
    console.log(playRound("Rock"));
 }
@@ -116,3 +125,6 @@ buttonPaper.addEventListener("click", playWithPaper );
 
 const buttonScissors = document.querySelector("#scissors");
 buttonScissors.addEventListener("click", playWithScissors);
+
+const buttonRestartGame = document.querySelector("#reset-game");
+buttonRestartGame.addEventListener("click", restartGame); 
